@@ -1,0 +1,1366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MSME Udyam Registration Status Check & Certificate Download Online</title>
+<meta name="description" content="Check MSME Udyam registration status and download printable Udyam certificate PDF for bank loans, tenders, and subsidies. Free online tool.">
+<link rel="canonical" href="https://example.com/udyam-status-check-certificate-download">
+
+<!-- Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "MSME Udyam Registration Status Checker & Certificate Generator",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web"
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --saffron: #FF6B00;
+    --saffron-light: #FF8C33;
+    --navy: #0D1B3E;
+    --navy-mid: #1A2F5E;
+    --navy-light: #253d7a;
+    --green: #138808;
+    --green-light: #1aab0a;
+    --gold: #C8922A;
+    --cream: #FDF6EC;
+    --bg: #F7F2EA;
+    --white: #FFFFFF;
+    --text: #1a1a2e;
+    --muted: #6b7280;
+    --border: #e2d9cc;
+    --error: #dc2626;
+    --success: #16a34a;
+    --radius: 12px;
+    --shadow: 0 4px 24px rgba(13,27,62,0.10);
+    --shadow-lg: 0 12px 48px rgba(13,27,62,0.16);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    line-height: 1.6;
+  }
+
+  /* HEADER */
+  header {
+    background: var(--navy);
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 3px solid var(--saffron);
+  }
+  .header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .logo-icon {
+    width: 40px; height: 40px;
+    background: var(--saffron);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+  }
+  .logo-text {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.15rem;
+    color: var(--white);
+    line-height: 1.2;
+  }
+  .logo-text span { color: var(--saffron); }
+  .header-badge {
+    background: rgba(255,107,0,0.15);
+    border: 1px solid var(--saffron);
+    color: var(--saffron-light);
+    font-size: 0.72rem;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, #1e3a6e 100%);
+    padding: 60px 24px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(255,107,0,0.12) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; left: -60px;
+    width: 240px; height: 240px;
+    background: radial-gradient(circle, rgba(19,136,8,0.10) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .tricolor-bar {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin-bottom: 24px;
+  }
+  .tricolor-bar span {
+    width: 36px; height: 4px; border-radius: 2px;
+  }
+  .t1 { background: var(--saffron); }
+  .t2 { background: var(--white); }
+  .t3 { background: var(--green); }
+
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(1.6rem, 4vw, 2.5rem);
+    color: var(--white);
+    line-height: 1.2;
+    max-width: 700px;
+    margin: 0 auto 16px;
+  }
+  .hero h1 span { color: var(--saffron); }
+  .hero-sub {
+    color: rgba(255,255,255,0.7);
+    font-size: 1rem;
+    max-width: 520px;
+    margin: 0 auto;
+    font-weight: 300;
+  }
+
+  /* MAIN */
+  main {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 32px 16px 64px;
+  }
+
+  /* CARD */
+  .card {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 32px;
+    margin-bottom: 28px;
+    border: 1px solid var(--border);
+  }
+  .card-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--navy);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .card-title .icon {
+    width: 32px; height: 32px;
+    background: var(--cream);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+    border: 1px solid var(--border);
+  }
+  .card-desc {
+    color: var(--muted);
+    font-size: 0.875rem;
+    margin-bottom: 24px;
+    padding-left: 42px;
+  }
+
+  /* INTRO SECTION */
+  #tool-intro .intro-text {
+    font-size: 0.95rem;
+    color: #374151;
+    line-height: 1.8;
+  }
+  .info-strip {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
+  .info-pill {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 6px 14px;
+    font-size: 0.8rem;
+    color: var(--navy);
+    font-weight: 500;
+  }
+  .info-pill .dot {
+    width: 7px; height: 7px; border-radius: 50%;
+  }
+
+  /* FORM */
+  .form-group { margin-bottom: 20px; }
+  label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--navy);
+    margin-bottom: 7px;
+  }
+  label .req { color: var(--error); }
+  label .opt {
+    color: var(--muted);
+    font-weight: 400;
+    font-size: 0.78rem;
+  }
+
+  input[type="text"],
+  input[type="tel"] {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    color: var(--text);
+    background: #fafafa;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+  }
+  input[type="text"]:focus,
+  input[type="tel"]:focus {
+    border-color: var(--saffron);
+    box-shadow: 0 0 0 3px rgba(255,107,0,0.12);
+    background: var(--white);
+  }
+  input.error { border-color: var(--error); }
+  input.valid { border-color: var(--success); }
+
+  .field-hint {
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-top: 5px;
+  }
+  .field-error {
+    font-size: 0.78rem;
+    color: var(--error);
+    margin-top: 5px;
+    display: none;
+  }
+  .field-error.show { display: block; }
+
+  .udyam-input-wrap {
+    position: relative;
+  }
+  .udyam-input-wrap .input-prefix {
+    position: absolute;
+    left: 14px; top: 50%; transform: translateY(-50%);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--saffron);
+    letter-spacing: 0.5px;
+    pointer-events: none;
+  }
+  #udyamNumber {
+    padding-left: 16px;
+    letter-spacing: 1px;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+
+  /* CONSENT */
+  .consent-wrap {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    background: #f0f4ff;
+    border: 1px solid #c7d2fe;
+    border-radius: 8px;
+    padding: 14px 16px;
+  }
+  input[type="checkbox"] {
+    width: 18px; height: 18px;
+    margin-top: 2px;
+    accent-color: var(--navy);
+    flex-shrink: 0;
+    cursor: pointer;
+  }
+  .consent-label {
+    font-size: 0.84rem;
+    color: #374151;
+    line-height: 1.5;
+    margin-bottom: 0;
+  }
+
+  /* BUTTONS */
+  .btn-primary {
+    width: 100%;
+    padding: 14px 28px;
+    background: var(--saffron);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    letter-spacing: 0.3px;
+  }
+  .btn-primary:hover:not(:disabled) {
+    background: var(--saffron-light);
+    box-shadow: 0 6px 20px rgba(255,107,0,0.3);
+    transform: translateY(-1px);
+  }
+  .btn-primary:active:not(:disabled) { transform: translateY(0); }
+  .btn-primary:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  .btn-secondary {
+    padding: 11px 22px;
+    background: var(--navy);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.2s, box-shadow 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .btn-secondary:hover { background: var(--navy-light); box-shadow: var(--shadow); }
+
+  .btn-outline {
+    padding: 11px 22px;
+    background: transparent;
+    color: var(--navy);
+    border: 1.5px solid var(--navy);
+    border-radius: 8px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .btn-outline:hover { background: var(--navy); color: var(--white); }
+
+  /* LOADER */
+  .loader-wrap {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 24px;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+  .loader-wrap.show { display: flex; }
+  .spinner {
+    width: 24px; height: 24px;
+    border: 3px solid var(--border);
+    border-top-color: var(--saffron);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* RESULT */
+  #statusResult {
+    animation: fadeUp 0.4s ease;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+  .status-badge.active { background: #dcfce7; color: #15803d; border: 1px solid #86efac; }
+  .status-badge.inactive { background: #fee2e2; color: #dc2626; border: 1px solid #fca5a5; }
+  .status-badge .dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+
+  .result-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  @media (max-width: 560px) { .result-grid { grid-template-columns: 1fr; } }
+
+  .result-field {
+    background: #f9fafb;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 16px;
+  }
+  .result-field.full { grid-column: 1 / -1; }
+  .result-field label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 4px;
+  }
+  .result-field span {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--navy);
+    display: block;
+  }
+
+  .inactive-warning {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: 8px;
+    padding: 14px 16px;
+    font-size: 0.875rem;
+    color: #dc2626;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    margin-top: 16px;
+  }
+
+  /* CERTIFICATE */
+  #certificate-generator {
+    animation: fadeUp 0.4s ease;
+  }
+
+  .cert-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+  }
+
+  /* Certificate Template */
+  #certificateTemplate {
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--white);
+    box-shadow: var(--shadow);
+  }
+  .cert-header {
+    background: var(--navy);
+    padding: 24px 32px;
+    text-align: center;
+    position: relative;
+  }
+  .cert-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--saffron), var(--white), var(--green));
+  }
+  .cert-emblem {
+    width: 56px; height: 56px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px;
+    margin: 0 auto 12px;
+    border: 2px solid rgba(255,255,255,0.2);
+  }
+  .cert-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.3rem;
+    color: var(--white);
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+  .cert-subtitle {
+    color: rgba(255,255,255,0.6);
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .cert-body {
+    padding: 28px 32px;
+  }
+  .cert-intro {
+    font-size: 0.9rem;
+    color: var(--muted);
+    text-align: center;
+    margin-bottom: 24px;
+    font-style: italic;
+  }
+  .cert-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .cert-table tr:nth-child(even) td { background: #f9fafb; }
+  .cert-table td {
+    padding: 11px 16px;
+    font-size: 0.875rem;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  .cert-table td:first-child {
+    font-weight: 600;
+    color: var(--navy);
+    width: 40%;
+    border-right: 1px solid var(--border);
+  }
+  .cert-table td:last-child {
+    color: var(--text);
+    font-weight: 500;
+  }
+  .cert-footer {
+    background: var(--cream);
+    border-top: 1px solid var(--border);
+    padding: 16px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .cert-footer-note {
+    font-size: 0.72rem;
+    color: var(--muted);
+    font-style: italic;
+  }
+  .cert-footer-date {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--navy);
+  }
+  .cert-watermark-text {
+    text-align: center;
+    padding: 8px;
+    font-size: 0.7rem;
+    color: #d1d5db;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  /* FAQ */
+  .faq-list { display: flex; flex-direction: column; gap: 10px; }
+  details {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--white);
+  }
+  details[open] { border-color: var(--saffron); }
+  summary {
+    padding: 14px 18px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: var(--navy);
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::after {
+    content: '+';
+    font-size: 1.2rem;
+    color: var(--saffron);
+    flex-shrink: 0;
+    transition: transform 0.2s;
+  }
+  details[open] summary::after {
+    content: '−';
+  }
+  details p {
+    padding: 0 18px 14px;
+    font-size: 0.875rem;
+    color: #4b5563;
+    line-height: 1.7;
+  }
+
+  /* DISCLAIMER */
+  .disclaimer-box {
+    background: #fffbeb;
+    border: 1px solid #fbbf24;
+    border-left: 4px solid #f59e0b;
+    border-radius: 8px;
+    padding: 16px 20px;
+    font-size: 0.84rem;
+    color: #78350f;
+    line-height: 1.7;
+  }
+  .disclaimer-box strong { color: #92400e; }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy);
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 20px 24px;
+    font-size: 0.78rem;
+  }
+  footer a { color: var(--saffron); text-decoration: none; }
+
+  /* PRINT */
+  @media print {
+    body * { visibility: hidden !important; }
+    #certificateTemplate, #certificateTemplate * { visibility: visible !important; }
+    #certificateTemplate {
+      position: fixed !important;
+      top: 0 !important; left: 0 !important;
+      width: 100% !important;
+      border: none !important;
+      box-shadow: none !important;
+      border-radius: 0 !important;
+    }
+    .cert-footer-note::after { content: " — This is an unofficial reference document."; }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 600px) {
+    .card { padding: 20px 16px; }
+    .cert-body { padding: 20px 16px; }
+    .cert-header { padding: 20px 16px; }
+    .cert-footer { padding: 12px 16px; }
+    .cert-title { font-size: 1.05rem; }
+    .cert-actions { flex-direction: column; }
+    .cert-actions button { width: 100%; justify-content: center; }
+  }
+
+  .hidden { display: none !important; }
+
+  /* Format guide */
+  .format-guide {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .format-guide span {
+    background: #e0f2fe;
+    color: #0369a1;
+    border: 1px solid #bae6fd;
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    font-family: monospace;
+  }
+
+  /* Progress steps */
+  .steps {
+    display: flex;
+    gap: 0;
+    margin-bottom: 28px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .step {
+    flex: 1;
+    padding: 10px 14px;
+    text-align: center;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--muted);
+    background: #f9fafb;
+    border-right: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+  .step:last-child { border-right: none; }
+  .step.active { background: var(--navy); color: var(--white); }
+  .step.done { background: #dcfce7; color: #15803d; }
+  .step-num {
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    background: currentColor;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.7rem;
+    color: var(--white);
+    flex-shrink: 0;
+  }
+  .step.active .step-num { background: var(--saffron); }
+  .step.done .step-num { background: #16a34a; }
+  @media (max-width: 480px) {
+    .step span:not(.step-num) { display: none; }
+  }
+
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <div class="logo">
+      <div class="logo-icon">🏭</div>
+      <div class="logo-text">MSME <span>Udyam</span> Portal</div>
+    </div>
+    <span class="header-badge">🔒 Free Unofficial Tool</span>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="tricolor-bar">
+    <span class="t1"></span><span class="t2"></span><span class="t3"></span>
+  </div>
+  <h1>MSME Udyam Registration<br><span>Status Checker</span> & Certificate Generator</h1>
+  <p class="hero-sub">Enter your Udyam number to instantly verify registration status and generate a printable certificate for banks, tenders & subsidies.</p>
+</div>
+
+<main>
+
+  <!-- PROGRESS STEPS -->
+  <div class="steps" id="progressSteps">
+    <div class="step active" id="step1">
+      <span class="step-num">1</span>
+      <span>Enter Details</span>
+    </div>
+    <div class="step" id="step2">
+      <span class="step-num">2</span>
+      <span>Verify Status</span>
+    </div>
+    <div class="step" id="step3">
+      <span class="step-num">3</span>
+      <span>Download Certificate</span>
+    </div>
+  </div>
+
+  <!-- SECTION 1: TOOL INTRO -->
+  <section id="tool-intro">
+    <div class="card">
+      <div class="card-title">
+        <div class="icon">ℹ️</div>
+        About This Tool
+      </div>
+      <p class="card-desc" style="margin-bottom:12px">Quick guide on what this tool does</p>
+      <p class="intro-text">
+        This free online tool helps MSME entrepreneurs quickly verify their Udyam Registration status and generate a clean, printable certificate format. Simply enter your Udyam Registration Number (format: UDYAM-XX-00-0000000) to fetch your enterprise details and create a PDF-ready certificate useful for bank loan applications, government tender submissions, and subsidy claims. For official verification, always refer to the official Udyam Registration portal.
+      </p>
+      <div class="info-strip">
+        <div class="info-pill"><span class="dot" style="background:#16a34a"></span> 100% Free</div>
+        <div class="info-pill"><span class="dot" style="background:#2563eb"></span> No Data Storage</div>
+        <div class="info-pill"><span class="dot" style="background:#d97706"></span> PDF Download</div>
+        <div class="info-pill"><span class="dot" style="background:#7c3aed"></span> Print Ready</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: STATUS CHECKER FORM -->
+  <section id="status-checker">
+    <div class="card">
+      <div class="card-title">
+        <div class="icon">🔍</div>
+        Check Registration Status
+      </div>
+      <p class="card-desc">Enter your 19-character Udyam Registration Number below</p>
+
+      <form id="udyamStatusForm" novalidate>
+
+        <!-- Field 1: Udyam Number -->
+        <div class="form-group">
+          <label for="udyamNumber">
+            Udyam Registration Number <span class="req">*</span>
+          </label>
+          <div class="udyam-input-wrap">
+            <input
+              type="text"
+              id="udyamNumber"
+              name="udyamNumber"
+              placeholder="UDYAM-MH-27-0001234"
+              maxlength="19"
+              required
+              autocomplete="off"
+              spellcheck="false"
+            >
+          </div>
+          <div class="format-guide">
+            <span>UDYAM</span> <span>-</span> <span>ST</span> <span>-</span> <span>00</span> <span>-</span> <span>0000000</span>
+          </div>
+          <div class="field-hint">Format: UDYAM-[State Code]-[District Code]-[7 Digit Number]</div>
+          <div class="field-error" id="udyamError">Please enter a valid Udyam number (e.g., UDYAM-MH-27-0001234)</div>
+        </div>
+
+        <!-- Field 2: Mobile Number -->
+        <div class="form-group">
+          <label for="mobileNumber">
+            Registered Mobile Number <span class="opt">(Optional — Recommended)</span>
+          </label>
+          <input
+            type="tel"
+            id="mobileNumber"
+            name="mobileNumber"
+            placeholder="10-digit mobile number"
+            maxlength="10"
+            pattern="[0-9]{10}"
+            autocomplete="off"
+            inputmode="numeric"
+          >
+          <div class="field-hint">Helps match your record accurately. Not stored.</div>
+          <div class="field-error" id="mobileError">Please enter a valid 10-digit mobile number</div>
+        </div>
+
+        <!-- Field 3: Consent -->
+        <div class="form-group">
+          <div class="consent-wrap">
+            <input type="checkbox" id="consent" required>
+            <label class="consent-label" for="consent">
+              I confirm that the details entered belong to me or I am authorized to access this registration information. I understand this is an unofficial tool for reference only.
+            </label>
+          </div>
+          <div class="field-error" id="consentError">You must confirm authorization before proceeding</div>
+        </div>
+
+        <!-- Submit -->
+        <button type="submit" id="checkStatusBtn" class="btn-primary">
+          <span id="btnIcon">🔍</span>
+          <span id="btnText">Check Registration Status</span>
+        </button>
+
+        <!-- Loader -->
+        <div class="loader-wrap" id="loaderWrap">
+          <div class="spinner"></div>
+          <span>Fetching registration details...</span>
+        </div>
+
+      </form>
+    </div>
+  </section>
+
+  <!-- SECTION 3: STATUS RESULT -->
+  <section id="statusResult" class="hidden">
+    <div class="card">
+      <div class="card-title">
+        <div class="icon">📋</div>
+        Registration Details
+      </div>
+      <p class="card-desc">Fetched details for your Udyam registration</p>
+
+      <div id="statusBadge" class="status-badge active">
+        <span class="dot"></span>
+        <span id="statusText">Active</span>
+      </div>
+
+      <div class="result-grid">
+        <div class="result-field full">
+          <label>Enterprise Name</label>
+          <span id="res-enterpriseName">—</span>
+        </div>
+        <div class="result-field">
+          <label>Owner / Proprietor Name</label>
+          <span id="res-ownerName">—</span>
+        </div>
+        <div class="result-field">
+          <label>Udyam Number</label>
+          <span id="res-udyamNumber">—</span>
+        </div>
+        <div class="result-field">
+          <label>Registration Date</label>
+          <span id="res-registrationDate">—</span>
+        </div>
+        <div class="result-field">
+          <label>Enterprise Type</label>
+          <span id="res-enterpriseType">—</span>
+        </div>
+        <div class="result-field">
+          <label>Organization Type</label>
+          <span id="res-organizationType">—</span>
+        </div>
+        <div class="result-field">
+          <label>Major Activity</label>
+          <span id="res-majorActivity">—</span>
+        </div>
+        <div class="result-field">
+          <label>District</label>
+          <span id="res-district">—</span>
+        </div>
+        <div class="result-field full">
+          <label>State</label>
+          <span id="res-state">—</span>
+        </div>
+        <div class="result-field full">
+          <label>Address</label>
+          <span id="res-address">—</span>
+        </div>
+      </div>
+
+      <div id="inactiveWarning" class="inactive-warning hidden">
+        ⚠️ <span>This registration appears to be <strong>Inactive</strong>. Certificate generation is disabled. Please visit the official Udyam portal to reactivate or verify your registration status.</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTION 4: CERTIFICATE GENERATOR -->
+  <section id="certificate-generator" class="hidden">
+    <div class="card">
+      <div class="card-title">
+        <div class="icon">📜</div>
+        Udyam Certificate
+      </div>
+      <p class="card-desc">Auto-generated certificate from your registration data</p>
+
+      <div class="cert-actions">
+        <button class="btn-secondary" id="downloadPdf">
+          ⬇️ Download Certificate PDF
+        </button>
+        <button class="btn-outline" onclick="window.print()">
+          🖨️ Print Certificate
+        </button>
+        <button class="btn-outline" id="resetBtn" style="margin-left:auto">
+          🔄 Check Another
+        </button>
+      </div>
+
+      <!-- Certificate Template -->
+      <div id="certificateTemplate">
+        <div class="cert-header">
+          <div class="cert-emblem">🏛️</div>
+          <div class="cert-title">UDYAM REGISTRATION CERTIFICATE</div>
+          <div class="cert-subtitle">Ministry of Micro, Small and Medium Enterprises — Reference Copy</div>
+        </div>
+
+        <div class="cert-body">
+          <p class="cert-intro">
+            This is to certify that the following enterprise is registered under the MSME Development Act.
+          </p>
+          <table class="cert-table">
+            <tr>
+              <td>Enterprise Name</td>
+              <td id="cert-enterpriseName">—</td>
+            </tr>
+            <tr>
+              <td>Udyam Registration No.</td>
+              <td id="cert-udyamNumber" style="font-weight:700;letter-spacing:0.5px">—</td>
+            </tr>
+            <tr>
+              <td>Owner / Proprietor</td>
+              <td id="cert-ownerName">—</td>
+            </tr>
+            <tr>
+              <td>Enterprise Type</td>
+              <td id="cert-enterpriseType">—</td>
+            </tr>
+            <tr>
+              <td>Organization Type</td>
+              <td id="cert-organizationType">—</td>
+            </tr>
+            <tr>
+              <td>Major Activity</td>
+              <td id="cert-majorActivity">—</td>
+            </tr>
+            <tr>
+              <td>Date of Registration</td>
+              <td id="cert-registrationDate">—</td>
+            </tr>
+            <tr>
+              <td>Address</td>
+              <td id="cert-address">—</td>
+            </tr>
+            <tr>
+              <td>Registration Status</td>
+              <td id="cert-status" style="color:#16a34a;font-weight:700">Active</td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="cert-footer">
+          <span class="cert-footer-note">⚠️ Unofficial reference document — Not issued by Government of India</span>
+          <span class="cert-footer-date" id="cert-generatedDate">Generated: —</span>
+        </div>
+        <div class="cert-watermark-text">For official records visit udyamregistration.gov.in</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTION 5: LEGAL DISCLAIMER -->
+  <section id="legal-disclaimer">
+    <div class="disclaimer-box">
+      <strong>⚠️ Important Disclaimer:</strong> This is an independent, unofficial helper tool created to assist users in checking publicly available MSME Udyam registration details and generating a printable certificate format for personal reference.<br><br>
+      This website is <strong>not affiliated with any government authority</strong>. For official records and verification, users should visit the official Udyam Registration portal at <strong>udyamregistration.gov.in</strong>. The certificate generated here is for reference purposes only and may not be accepted as an official document in all cases.
+    </div>
+  </section>
+
+  <!-- SECTION 6: FAQ -->
+  <section id="faq" style="margin-top:28px">
+    <div class="card">
+      <div class="card-title">
+        <div class="icon">❓</div>
+        Frequently Asked Questions
+      </div>
+      <p class="card-desc">Common questions about Udyam registration and this tool</p>
+
+      <div class="faq-list">
+        <details>
+          <summary>How to check Udyam registration status online?</summary>
+          <p>To check your Udyam registration status, enter your 19-character Udyam Registration Number in the format UDYAM-[State Code]-[District Code]-[7 Digit Number] in the form above. Optionally enter your registered mobile number for better accuracy, check the authorization box, and click "Check Registration Status". Your enterprise details will appear instantly.</p>
+        </details>
+
+        <details>
+          <summary>How to download the MSME Udyam certificate?</summary>
+          <p>After successfully checking your registration status (and the status shows Active), scroll down to the Certificate section. Click the "Download Certificate PDF" button to save a PDF copy to your device. You can also click "Print Certificate" to directly print it. Note: This is an unofficial reference certificate — the official certificate can be downloaded from udyamregistration.gov.in.</p>
+        </details>
+
+        <details>
+          <summary>Is this certificate valid for bank loans and government tenders?</summary>
+          <p>The certificate generated by this tool is an <strong>unofficial reference document</strong> for personal use. For formal bank loan applications, tenders, or subsidy claims, you should use the official Udyam Registration Certificate downloaded directly from the official government portal at udyamregistration.gov.in. Banks and tender authorities typically require the official government-issued certificate. This tool helps you quickly reference your details and prepare.</p>
+        </details>
+
+        <details>
+          <summary>What to do if Udyam registration status shows Inactive?</summary>
+          <p>If your Udyam registration status is Inactive, you should: (1) Visit the official Udyam Registration portal at udyamregistration.gov.in, (2) Log in with your registered mobile number or Aadhaar, (3) Check if any annual update (ITR/GSTR linking) is pending — registrations can become inactive if annual details are not updated, (4) Contact the MSME helpdesk if the issue persists. Certificate generation is disabled for inactive registrations on this tool.</p>
+        </details>
+
+        <details>
+          <summary>What is the format of the Udyam Registration Number?</summary>
+          <p>The Udyam Registration Number follows the format: <strong>UDYAM-[2-letter State Code]-[2-digit District Code]-[7-digit Serial Number]</strong>. For example: UDYAM-MH-27-0001234 (Maharashtra, District 27). The total length is exactly 19 characters. Only letters and digits are used — no special characters other than hyphens.</p>
+        </details>
+
+        <details>
+          <summary>Is my data stored when I use this tool?</summary>
+          <p>No. This tool does not store any personal data, Aadhaar numbers, PAN details, or mobile numbers on any server. The form submission is used solely to fetch publicly available registration data for display. We do not log, retain, or share any information you enter. For complete privacy, always verify through the official government portal as well.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <p>This is an unofficial tool. Not affiliated with the Government of India or MSME Ministry. &nbsp;|&nbsp; For official services visit <a href="https://udyamregistration.gov.in" target="_blank" rel="noopener">udyamregistration.gov.in</a></p>
+</footer>
+
+<!-- jsPDF CDN (lazy loaded) -->
+<script>
+  // ============================================================
+  // DEMO DATA — Replace with real API call in production
+  // ============================================================
+  const DEMO_DATA = {
+    success: true,
+    data: {
+      enterpriseName: "SHREE ENTERPRISES",
+      ownerName: "Ramesh Kumar Sharma",
+      udyamNumber: "",           // filled from input
+      registrationDate: "15/03/2021",
+      enterpriseType: "Micro",
+      organizationType: "Proprietorship",
+      majorActivity: "Manufacturing",
+      address: "Plot No. 42, MIDC Industrial Area, Bhosari",
+      district: "Pune",
+      state: "Maharashtra",
+      status: "Active"
+    }
+  };
+
+  // ============================================================
+  // VALIDATION
+  // ============================================================
+  const UDYAM_REGEX = /^UDYAM-[A-Z]{2}-\d{2}-\d{7}$/;
+  const MOBILE_REGEX = /^[0-9]{10}$/;
+
+  function validateUdyam(val) {
+    return UDYAM_REGEX.test(val.trim().toUpperCase());
+  }
+  function validateMobile(val) {
+    if (!val) return true; // optional
+    return MOBILE_REGEX.test(val.trim());
+  }
+
+  // ============================================================
+  // FORM SUBMIT
+  // ============================================================
+  const form = document.getElementById('udyamStatusForm');
+  const udyamInput = document.getElementById('udyamNumber');
+  const mobileInput = document.getElementById('mobileNumber');
+  const consentChk = document.getElementById('consent');
+  const submitBtn = document.getElementById('checkStatusBtn');
+  const loaderWrap = document.getElementById('loaderWrap');
+
+  // Auto-uppercase and remove spaces
+  udyamInput.addEventListener('input', function() {
+    let val = this.value.toUpperCase().replace(/\s/g, '');
+    this.value = val;
+    // Live validation hint
+    if (val.length >= 5) {
+      if (validateUdyam(val)) {
+        this.classList.remove('error'); this.classList.add('valid');
+        document.getElementById('udyamError').classList.remove('show');
+      } else {
+        this.classList.remove('valid');
+      }
+    }
+  });
+
+  // Mobile digits only
+  mobileInput.addEventListener('input', function() {
+    this.value = this.value.replace(/\D/g, '').slice(0, 10);
+  });
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const udyamVal = udyamInput.value.trim().toUpperCase();
+    const mobileVal = mobileInput.value.trim();
+    let hasError = false;
+
+    // Validate Udyam
+    if (!validateUdyam(udyamVal)) {
+      udyamInput.classList.add('error'); udyamInput.classList.remove('valid');
+      document.getElementById('udyamError').classList.add('show');
+      hasError = true;
+    } else {
+      udyamInput.classList.remove('error'); udyamInput.classList.add('valid');
+      document.getElementById('udyamError').classList.remove('show');
+    }
+
+    // Validate Mobile (optional)
+    if (mobileVal && !validateMobile(mobileVal)) {
+      mobileInput.classList.add('error');
+      document.getElementById('mobileError').classList.add('show');
+      hasError = true;
+    } else {
+      mobileInput.classList.remove('error');
+      document.getElementById('mobileError').classList.remove('show');
+    }
+
+    // Consent
+    if (!consentChk.checked) {
+      document.getElementById('consentError').classList.add('show');
+      hasError = true;
+    } else {
+      document.getElementById('consentError').classList.remove('show');
+    }
+
+    if (hasError) return;
+
+    // Disable button, show loader
+    submitBtn.disabled = true;
+    submitBtn.querySelector('#btnText').textContent = 'Checking...';
+    loaderWrap.classList.add('show');
+
+    try {
+      // -------------------------------------------------------
+      // REAL API CALL (uncomment and configure for production)
+      // -------------------------------------------------------
+      // const response = await fetch('/api/udyam-check', {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/json' },
+      //   body: JSON.stringify({ udyamNumber: udyamVal, mobileNumber: mobileVal })
+      // });
+      // const result = await response.json();
+
+      // -------------------------------------------------------
+      // DEMO: Simulate API delay
+      // -------------------------------------------------------
+      await new Promise(r => setTimeout(r, 1800));
+      const result = JSON.parse(JSON.stringify(DEMO_DATA));
+      result.data.udyamNumber = udyamVal;
+
+      loaderWrap.classList.remove('show');
+
+      if (result.success) {
+        displayResult(result.data);
+      } else {
+        alert('No registration found for this Udyam number. Please verify and try again.');
+        resetBtn();
+      }
+    } catch (err) {
+      loaderWrap.classList.remove('show');
+      alert('Unable to fetch data. Please check your connection and try again.');
+      resetBtn();
+    }
+  });
+
+  function resetBtn() {
+    submitBtn.disabled = false;
+    submitBtn.querySelector('#btnText').textContent = 'Check Registration Status';
+  }
+
+  // ============================================================
+  // DISPLAY RESULT
+  // ============================================================
+  function displayResult(data) {
+    // Fill result fields
+    const fields = ['enterpriseName','ownerName','udyamNumber','registrationDate',
+                    'enterpriseType','organizationType','majorActivity','address','district','state'];
+    fields.forEach(f => {
+      const el = document.getElementById('res-' + f);
+      if (el) el.textContent = data[f] || '—';
+    });
+
+    // Status badge
+    const badge = document.getElementById('statusBadge');
+    const statusText = document.getElementById('statusText');
+    const isActive = data.status && data.status.toLowerCase() === 'active';
+    badge.className = 'status-badge ' + (isActive ? 'active' : 'inactive');
+    statusText.textContent = data.status || 'Unknown';
+
+    // Show result section
+    document.getElementById('statusResult').classList.remove('hidden');
+
+    // Update steps
+    document.getElementById('step1').className = 'step done';
+    document.getElementById('step2').className = 'step active';
+
+    // Scroll to result
+    document.getElementById('statusResult').scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    if (isActive) {
+      document.getElementById('inactiveWarning').classList.add('hidden');
+      fillCertificate(data);
+      document.getElementById('certificate-generator').classList.remove('hidden');
+      document.getElementById('step3').className = 'step active';
+      document.getElementById('step2').className = 'step done';
+    } else {
+      document.getElementById('inactiveWarning').classList.remove('hidden');
+      document.getElementById('certificate-generator').classList.add('hidden');
+    }
+
+    resetBtn();
+  }
+
+  // ============================================================
+  // FILL CERTIFICATE
+  // ============================================================
+  function fillCertificate(data) {
+    document.getElementById('cert-enterpriseName').textContent = data.enterpriseName || '—';
+    document.getElementById('cert-udyamNumber').textContent = data.udyamNumber || '—';
+    document.getElementById('cert-ownerName').textContent = data.ownerName || '—';
+    document.getElementById('cert-enterpriseType').textContent = data.enterpriseType || '—';
+    document.getElementById('cert-organizationType').textContent = data.organizationType || '—';
+    document.getElementById('cert-majorActivity').textContent = data.majorActivity || '—';
+    document.getElementById('cert-registrationDate').textContent = data.registrationDate || '—';
+    document.getElementById('cert-address').textContent =
+      [data.address, data.district, data.state].filter(Boolean).join(', ') || '—';
+    const certStatus = document.getElementById('cert-status');
+    certStatus.textContent = data.status || '—';
+    certStatus.style.color = data.status === 'Active' ? '#16a34a' : '#dc2626';
+
+    const now = new Date();
+    document.getElementById('cert-generatedDate').textContent =
+      'Generated: ' + now.toLocaleDateString('en-IN', { day:'2-digit', month:'short', year:'numeric' });
+  }
+
+  // ============================================================
+  // PDF DOWNLOAD (using print approach + jsPDF fallback)
+  // ============================================================
+  document.getElementById('downloadPdf').addEventListener('click', function() {
+    // Lazy load jsPDF
+    if (typeof window.jspdf === 'undefined' && typeof window.jsPDF === 'undefined') {
+      const script = document.createElement('script');
+      script.src = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js';
+      script.onload = function() {
+        const script2 = document.createElement('script');
+        script2.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js';
+        script2.onload = generatePDF;
+        document.head.appendChild(script2);
+      };
+      document.head.appendChild(script);
+    } else {
+      generatePDF();
+    }
+  });
+
+  function generatePDF() {
+    const btn = document.getElementById('downloadPdf');
+    btn.disabled = true;
+    btn.textContent = '⏳ Generating PDF...';
+
+    html2canvas(document.getElementById('certificateTemplate'), {
+      scale: 2,
+      useCORS: true,
+      backgroundColor: '#ffffff'
+    }).then(function(canvas) {
+      const { jsPDF } = window.jspdf || window;
+      const pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+      const margin = 15;
+      const pageW = 210;
+      const usableW = pageW - margin * 2;
+      const imgH = (canvas.height * usableW) / canvas.width;
+
+      pdf.addImage(canvas.toDataURL('image/jpeg', 0.95), 'JPEG', margin, margin, usableW, imgH);
+
+      const udyamNum = document.getElementById('cert-udyamNumber').textContent.replace(/[^A-Z0-9-]/g,'');
+      pdf.save('Udyam-Certificate-' + udyamNum + '.pdf');
+
+      btn.disabled = false;
+      btn.textContent = '⬇️ Download Certificate PDF';
+    }).catch(function() {
+      alert('PDF generation failed. Please use the Print option instead.');
+      btn.disabled = false;
+      btn.textContent = '⬇️ Download Certificate PDF';
+    });
+  }
+
+  // ============================================================
+  // RESET
+  // ============================================================
+  document.getElementById('resetBtn').addEventListener('click', function() {
+    form.reset();
+    udyamInput.classList.remove('valid','error');
+    mobileInput.classList.remove('valid','error');
+    document.getElementById('statusResult').classList.add('hidden');
+    document.getElementById('certificate-generator').classList.add('hidden');
+    document.getElementById('step1').className = 'step active';
+    document.getElementById('step2').className = 'step';
+    document.getElementById('step3').className = 'step';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+</script>
+</body>
+</html>
